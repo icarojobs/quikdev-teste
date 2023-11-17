@@ -14,8 +14,6 @@ Para executar tanto o `frontend` quanto a `api` (backend), será necessário os 
 - Docker
 - docker-compose
 - Node.js
-- node-gyp (`npm install -g node-gyp`)
-- bcrypt (`npm install bcrypt -g`)
 
 ---
 
@@ -34,7 +32,7 @@ npm install -g http-server
 
 ---
 
-### PASSO-A-PASSO PARA EXECUTAR O PROJETO
+### PASSO-A-PASSO PARA EXECUTAR O PROJETO COMPLETO (FRONTEND + API)
 Abaixo, vou listar todos os comandos necessários para executar o projeto em qualquer computador com `Docker`, `docker-compose`, `git` e `node.js` instalados:.
 ```bash
 cd ~/Seu-diretorio-de-projetos
@@ -51,6 +49,7 @@ git clone git@github.com:icarojobs/quikdev-teste.git # para ssh
 cd quikdev-teste/api
 cp .env.example .env
 docker-compose up -d # Aguarde alguns segundos, até o terminal estar liberado para digitar.
+sleep 7 && docker-compose exec -T app bun run migrate # popula todas as tabelas do banco de dados. Explico o sleep na seção 'SOLUÇÃO DE PROBLEMAS'
 
 # Iniciando o frontend
 cd ../frontend
@@ -96,3 +95,10 @@ DB_USERNAME=sail
 DB_PASSWORD=password
 DB_DATABASE=quikdev_teste
 ```
+
+---
+
+### SOLUÇÃO DE PROBLEMAS
+**Erro `Error: Cannot find module 'lodash'` ao executar as migrations:**
+- Esse erro é ocasionado em casos que tentamos executar o comando de migração, logo que o terminal é liberado. Utilizamos um sleep 7 pra dar tempo de todos os containers estarem 100% carregados.
+- Se ainda com o `sleep 7` ocorrer o erro. Aguarde mais uns 10 seguntos e tente executar o comando `docker-compose exec -T app bun run migrate` novamente (sem sleep)
