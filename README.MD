@@ -70,6 +70,14 @@ http://127.0.0.1:8025
 
 ---
 
+### EXECUTANDO A API EM MODO DEBUG
+Durante o desenvolvimento é recomendado executar a API em modo de desenvolvimento para detectar erros e bugs. 
+Para isso, basta executar da seguinte forma:
+```bash
+docker-compose stop  # primeiro, pare todos os containers da API
+docker-compose up    # execute em modo debug
+```
+
 ### ACESSANDO O CONTAINER APP
 ```bash
 cd api
