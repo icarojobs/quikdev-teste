@@ -49,6 +49,7 @@ git clone git@github.com:icarojobs/quikdev-teste.git # para ssh
 
 # Iniciando o backend + banco de dados + simulador de emails
 cd quikdev-teste/api
+cp .env.example .env
 docker-compose up -d # Aguarde alguns segundos, até o terminal estar liberado para digitar.
 
 # Iniciando o frontend
@@ -84,4 +85,14 @@ docker-compose up    # execute em modo debug
 ```bash
 cd api
 docker exec -it app sh  # os containers devem estar 'up', se não estiver, execute o seguinte comando antes: docker-compose up -d
+```
+
+### CONECTANDO AO BANCO DE DADOS
+Caso queira conectar utilizando um cliente MySQL, basta informar os dados contidos no arquivo `.env.example` ou `.env`:
+```dotenv
+DB_HOST=127.0.0.1 # Na aplicação, a conexão é pelo serviço, ou seja, host=mysql
+DB_PORT=3306
+DB_USERNAME=sail
+DB_PASSWORD=password
+DB_DATABASE=quikdev_teste
 ```
