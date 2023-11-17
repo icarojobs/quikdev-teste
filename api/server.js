@@ -5,7 +5,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import * as jwt from 'jsonwebtoken';
-import bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 
 const salt = 10;
 const app = express();

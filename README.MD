@@ -14,6 +14,8 @@ Para executar tanto o `frontend` quanto a `api` (backend), será necessário os 
 - Docker
 - docker-compose
 - Node.js
+- node-gyp (`npm install -g node-gyp`)
+- bcrypt (`npm install bcrypt -g`)
 
 ---
 
