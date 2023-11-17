@@ -4,7 +4,6 @@ import { env } from './app/helpers/env.js';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-import { HelloController } from "./app/controllers/HelloController.js";
 //import jwt from 'jsonwebtoken';
 //import bcrypt from 'bcrypt';
 

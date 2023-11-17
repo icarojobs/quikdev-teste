@@ -16,6 +16,7 @@ services:
       - '${APP_PORT:-3000}:3000'
     networks:
       - sail
+    command: bun run start
     stdin_open: true
     tty: true
 
