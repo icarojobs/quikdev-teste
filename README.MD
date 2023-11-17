@@ -72,5 +72,6 @@ http://127.0.0.1:8025
 
 ### ACESSANDO O CONTAINER APP
 ```bash
-docker exec -it app bash
+cd api
+docker exec -it app sh  # os containers devem estar 'up', se não estiver, execute o seguinte comando antes: docker-compose up -d
 ```
