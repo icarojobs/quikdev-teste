@@ -47,7 +47,7 @@ git clone git@github.com:icarojobs/quikdev-teste.git # para ssh
 
 # Iniciando o backend + banco de dados + simulador de emails
 cd quikdev-teste/api
-docker-compose up -d
+docker-compose up -d # Aguarde alguns segundos, até o terminal estar liberado para digitar.
 
 # Iniciando o frontend
 cd ../frontend
@@ -55,6 +55,9 @@ bun install
 bun run build
 cd dist
 http-server
+
+# Caso queira executar todos esses comandos de uma vez, navegue até o diretório '/frontend' e digite:
+bun install && bun run build && cd dist && http-server
 ```
 
 ---
