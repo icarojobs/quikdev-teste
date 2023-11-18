@@ -49,7 +49,7 @@ git clone git@github.com:icarojobs/quikdev-teste.git # para ssh
 cd quikdev-teste/api
 cp .env.example .env
 docker-compose up -d # Aguarde alguns segundos, até o terminal estar liberado para digitar.
-sleep 7 && docker-compose exec -T app bun run migrate # popula todas as tabelas do banco de dados. Explico o sleep na seção 'SOLUÇÃO DE PROBLEMAS'
+sleep 7 && docker-compose exec -T app bun run migrate # Popula todas as tabelas do banco de dados. Explico o sleep na seção 'SOLUÇÃO DE PROBLEMAS'
 
 # Iniciando o frontend
 cd ../frontend
@@ -99,6 +99,18 @@ DB_DATABASE=quikdev_teste
 ---
 
 ### SOLUÇÃO DE PROBLEMAS
-**Erro `Error: Cannot find module 'lodash'` ao executar as migrations:**
+**Erro `Error: Cannot find module 'lodash'` ou `Error: Cannot find module 'inflection'` (ou algo do tipo) ao executar as migrations:**
 - Esse erro é ocasionado em casos que tentamos executar o comando de migração, logo que o terminal é liberado. Utilizamos um sleep 7 pra dar tempo de todos os containers estarem 100% carregados.
 - Se ainda com o `sleep 7` ocorrer o erro. Aguarde mais uns 10 seguntos e tente executar o comando `docker-compose exec -T app bun run migrate` novamente (sem sleep)
+
+---
+
+### CONSIDERAÇÕES GERAIS
+**Consideração 01:** Em um projeto com `Node.js` no backend eu jamais utilizaria o `nodemon` para a `produção`, 
+pelo simples fato de ele não conseguir fazer o reload completo em error graves. Em produção eu utilizaria o `pm2`.
+
+**Consideração 02:** Eu precisei instalar `mysql2` porque o gerenciador de migrations (sequelize) utiliza esse driver. Por 
+fim, decidi utilizar esse driver por toda a aplicação ao invés do driver `mysql` por vários motivos:
+- O driver `mysql2` possui suporte a `prepared statements`, `ssl` e `compressão nativa em Javascript`.
+- O driver `mysql2` utiliza bem menos pacotes que o `mysql`.
+- O driver `mysql2` não possui vulnerabilidades, enquanto o driver `mysql` possui 3 moderadas: Unsafe Options, Remote Memory Exposure, SQL Injection.
