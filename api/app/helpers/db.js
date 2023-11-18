@@ -1,10 +1,10 @@
 import { env } from './env.js';
-import mysql from 'mysql';
+import { createConnection } from 'mysql2';
 
-export const db = mysql.createConnection({
-    host: env('DB_HOST'),
-    port: env('DB_PORT'),
-    user: env('DB_USER'),
+export const db = createConnection({
     password: env('DB_PASSWORD'),
     database: env('DB_DATABASE'),
+    port: env('DB_PORT'),
+    host: env('DB_HOST'),
+    user: env('DB_USERNAME'),
 });

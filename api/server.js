@@ -22,7 +22,6 @@ app.get('/', (req, res) => {
     return res.json({ success: true, message: "QuikDev API Server v1.0.0" });
 });
 
-
 app.post('/register', (req, res) => {
     const sql = "INSERT INTO login (`name`, `email`, `password`) VALUES (?)";
 
