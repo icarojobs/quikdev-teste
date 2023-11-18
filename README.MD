@@ -111,6 +111,6 @@ pelo simples fato de ele não conseguir fazer o reload completo em error graves.
 
 **Consideração 02:** Eu precisei instalar `mysql2` porque o gerenciador de migrations (sequelize) utiliza esse driver. Por 
 fim, decidi utilizar esse driver por toda a aplicação ao invés do driver `mysql` por vários motivos:
-- O driver `mysql2` possui suporte a `prepared statements`, `ssl` e `compressão nativa em Javascript`.
-- O driver `mysql2` utiliza bem menos pacotes que o `mysql`.
+- O driver `mysql2` possui suporte a `prepared statements`, `ssl` e `compressão nativa em Javascript` (além de ter uma performance melhor que o driver anterior).
+- O driver `mysql2` utiliza bem menos dependências que o `mysql`.
 - O driver `mysql2` não possui vulnerabilidades, enquanto o driver `mysql` possui 3 moderadas: Unsafe Options, Remote Memory Exposure, SQL Injection.
