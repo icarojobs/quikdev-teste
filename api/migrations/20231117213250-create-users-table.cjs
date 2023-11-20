@@ -19,6 +19,11 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
+      role: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        default: 'user',
+      },
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,

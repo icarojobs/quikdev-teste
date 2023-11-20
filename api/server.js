@@ -6,17 +6,22 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import * as jwt from 'jsonwebtoken';
 import * as bcrypt from 'bcryptjs';
+import userRoutes from "./routes/userRoutes.js";
 
 const salt = 10;
 const app = express();
 
 app.use(express.json());
+
 app.use(cors({
     origin: [`${env('APP_PROTOCOL')}://${env('APP_URL')}:${env('APP_PORT')}`],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
+
 app.use(cookieParser());
+
+app.use('/users', userRoutes);
 
 app.get('/', (req, res) => {
     return res.json({ success: true, message: "QuikDev API Server v1.0.0" });
