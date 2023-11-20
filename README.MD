@@ -14,6 +14,9 @@ Para executar tanto o `frontend` quanto a `api` (backend), será necessário os 
 - Docker
 - docker-compose
 - Node.js
+- npm
+- bun
+**Atenção:** Todo comando `bun` pode ser substituído por `npm` caso preferir.
 
 ---
 
@@ -54,7 +57,7 @@ sleep 7 && docker-compose exec -T app bun run migrate # Popula todas as tabelas 
 # Iniciando o frontend
 cd ../frontend
 bun install
-bun run build
+bun run build  # Aqui pode ser trocado por 'bun run dev' caso não queira compilar.
 cd dist
 http-server
 

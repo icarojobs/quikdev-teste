@@ -23,6 +23,7 @@ RUN if [[ $(uname -m) == "aarch64" ]] ; \
 
 RUN npm install -g bun --ignore-scripts
 RUN npm install -g nodemon
+RUN npm install pm2@latest -g
 
 EXPOSE ${APP_PORT}
 

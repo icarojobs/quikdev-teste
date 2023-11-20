@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "bun install && nodemon server.js",
+    "pm2:watch": "bun install && pm2 start server.js --watch",
     "migration:create": "bunx sequelize-cli migration:create",
     "migrate": "env-cmd bunx sequelize-cli db:migrate",
     "migrate:rollback": "env-cmd bunx sequelize-cli db:migrate:undo"

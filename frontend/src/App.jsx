@@ -1,11 +1,16 @@
-import {FBButton} from "./components/Button.jsx";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
+import { Login } from "./components/forms/Login";
+import { Register } from "./components/forms/Register.jsx"
 
 
 export const App = () => {
     return (
-        <div className="bg-black p-8">
-            <h1 className="text-green-600 text-center text-7xl">Hello React.js!</h1>
-            <FBButton>Hi there!</FBButton>
-        </div>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+            </Routes>
+        </BrowserRouter>
     )
 }
