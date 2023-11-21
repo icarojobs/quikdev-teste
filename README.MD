@@ -67,7 +67,7 @@ bun install && bun run build && cd dist && http-server
 
 ---
 
-### ACESSANDO SIMULADOR DE EMAILS
+### ACESSANDO O SIMULADOR DE EMAILS
 Para simular o envio de emails, utilizamos o `mailpit`. Para acessá-lo, basta abrir o browser no seguinte endereço:
 ```bash
 http://127.0.0.1:8025
@@ -101,6 +101,16 @@ DB_DATABASE=quikdev_teste
 
 ---
 
+### TESTE DE BACKEND
+No diretório `/api/docs` deixei uma collection para testar os endpoints da API. Não tem todos, pois eu ia adicionando 
+conforme ia criando cada endpoint.
+
+---
+
+
+
+---
+
 ### SOLUÇÃO DE PROBLEMAS
 **Erro `Error: Cannot find module 'lodash'` ou `Error: Cannot find module 'inflection'` (ou algo do tipo) ao executar as migrations:**
 - Esse erro é ocasionado em casos que tentamos executar o comando de migração, logo que o terminal é liberado. Utilizamos um sleep 7 pra dar tempo de todos os containers estarem 100% carregados.
@@ -109,11 +119,26 @@ DB_DATABASE=quikdev_teste
 ---
 
 ### CONSIDERAÇÕES GERAIS
-**Consideração 01:** Em um projeto com `Node.js` no backend eu jamais utilizaria o `nodemon` para a `produção`, 
-pelo simples fato de ele não conseguir fazer o reload completo em error graves. Em produção eu utilizaria o `pm2`.
+**Consideração 01:** O teste não foi 100% entregue, pois foquei em fazer uma arquitetura de fácil ambientação para 
+outros desenvolvedores (vite, docker, mailpit, etc.) e código de fácil manutenção. Do ponto que parei, agora ia fazer os 
+CRUDS dentro do `/dashboard`, utilizando os componentes do `flowbite-react` e, por fim, ia refatorar e melhorar o visual como um todo.
 
-**Consideração 02:** Eu precisei instalar `mysql2` porque o gerenciador de migrations (sequelize) utiliza esse driver. Por 
-fim, decidi utilizar esse driver por toda a aplicação ao invés do driver `mysql` por vários motivos:
+**Consideração 02:** Como o `Node + React` não é minha stack principal de desenvolvimento, tive que pesquisar o que tem de 
+melhor utilizando essas tecnologias para projetos fullstack. Só não consegui implementar o React-Query (não consegui 
+resolver o ao utilizar a query, faltou tempo de estudo).
+
+**Consideração 03:** Em um projeto com `Node.js` no backend eu jamais utilizaria o `nodemon` para a `produção`, 
+pelo simples fato de ele não conseguir fazer o reload completo em error graves. Então, já deixei pronto o `pm2` no 
+container caso o projeto vá para a produção.
+
+**Consideração 04:** Eu precisei instalar `mysql2` porque o gerenciador de migrations (sequelize) utiliza esse driver. 
+Por fim, decidi utilizar esse driver por toda a aplicação ao invés do driver `mysql` por vários motivos:
 - O driver `mysql2` possui suporte a `prepared statements`, `ssl` e `compressão nativa em Javascript` (além de ter uma performance melhor que o driver anterior).
 - O driver `mysql2` utiliza bem menos dependências que o `mysql`.
 - O driver `mysql2` não possui vulnerabilidades, enquanto o driver `mysql` possui 3 moderadas: Unsafe Options, Remote Memory Exposure, SQL Injection.
+
+**Consideração 05:** Durante o desenvolvimento eu testei várias ferramentas para estilização visual, como `styled-components`, 
+`raw-css`, `tailwindcss`, `flowbite-react` e concluí que daria pra fazer o projeto inteiro apenas com `flowbite-react + tailwind css`.
+
+**Consideração final:** Apesar de eu não ter entregado o projeto completo, eu realmente estou satisfeito com a arquitetura 
+que foi montada. Caso não dê certo essa vaga, continuarei os estudos nesse projeto para uma oportunidade futura.
