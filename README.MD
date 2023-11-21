@@ -140,5 +140,7 @@ Por fim, decidi utilizar esse driver por toda a aplicação ao invés do driver 
 **Consideração 05:** Durante o desenvolvimento eu testei várias ferramentas para estilização visual, como `styled-components`, 
 `raw-css`, `tailwindcss`, `flowbite-react` e concluí que daria pra fazer o projeto inteiro apenas com `flowbite-react + tailwind css`.
 
+**Consideração 06:** Pensando em um projeto com versionamento profissional, foi criado a tag `v1.0.0-alpha` com seu devido `Release`.
+
 **Consideração final:** Apesar de eu não ter entregado o projeto completo, eu realmente estou satisfeito com a arquitetura 
 que foi montada. Caso não dê certo essa vaga, continuarei os estudos nesse projeto para uma oportunidade futura.
