@@ -1,21 +1,24 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {Form, Formik} from "formik";
-import {Input} from "./Input.jsx";
+import { Input } from "../components/forms/Input.jsx";
 import {Button} from "flowbite-react";
-import {toast, ToastContainer} from "react-toastify";
 import * as Yup from "yup";
+import api from "../services/api.js";
+import { ToastContainer, toast } from "react-toastify";
 
 export const Register = () => {
+    const navigate = useNavigate();
+
     const initialValues = {
-        nome: "",
+        name: "",
         email: "",
-        senha: "",
+        password: "",
         role: "user",
     };
 
     const validationSchema = Yup.object({
-        nome: Yup
+        name: Yup
             .string()
             .min(3, "O campo nome deve ter ao menos 3 caracteres")
             .required("O campo nome é obrigatório."),
@@ -23,17 +26,30 @@ export const Register = () => {
             .string()
             .email("Email inválido.")
             .required("O campo email é obrigatório."),
-        senha: Yup
-            .string()
-            .required("O campo senha é obrigatório."),
-        confirmar_senha: Yup
+        password: Yup
             .string()
             .required("O campo senha é obrigatório."),
     });
-    const handleSubmit = (values, {setSubmitting}) => {
-        console.log(values);
+    const handleSubmit = async (values, {setSubmitting}) => {
+            try {
+            const { data } = await api.post('/register', values);
 
-        setSubmitting(false);
+            if (data.status === false) {
+                toast.warn(data.message, {
+                    position: toast.POSITION.TOP_RIGHT,
+                    autoClose: 3500,
+                });
+            }
+
+            if (data.status === true) {
+                navigate('/');
+            }
+        } catch (error) {
+            console.log('API Request Error:')
+            console.log(error.message);
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     return (
@@ -49,10 +65,9 @@ export const Register = () => {
                     {({values, isSubmiting}) => (
                         <Form className="w-full">
                             <div className="flex flex-col gap-4">
-                                <Input className="w-full" name="nome" required />
+                                <Input className="w-full" name="name" required />
                                 <Input className="w-full" name="email" required />
-                                <Input className="w-full" name="senha" type="password" required />
-                                <Input className="w-full" name="confirmar_senha" type="password" required />
+                                <Input className="w-full" name="password" type="password" required />
                                 <Button color="success" type="submit" disabled={isSubmiting}>
                                     Realizar Cadastro
                                 </Button>
@@ -67,7 +82,7 @@ export const Register = () => {
                     </Link>
                 </div>
             </div>
-            <ToastContainer autoClose={3500} position={toast.POSITION.TOP_RIGHT} />
+            <ToastContainer />
         </div>
     );
 };

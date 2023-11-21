@@ -8,7 +8,7 @@ const salt = 10;
 export const storeUser = (req, res) => {
     const sql = "INSERT INTO users (`name`, `email`, `password`, `role`, `created_at`, `updated_at`) VALUES (?, ?, ?, ?, ?, ?)";
 
-    bcrypt.hash(req.body.password.toString(), salt, (error, hash) => {
+    bcrypt.hash(req.body.password, salt, (error, hash) => {
         if (error) {
             return res.json({ status: false, message: `${ResponseMessage.ENCRYPTION_ERROR}: ${error.message}` });
         }

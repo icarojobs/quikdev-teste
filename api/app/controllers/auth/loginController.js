@@ -24,7 +24,7 @@ export const checkUser = (req, res) => {
                 name: data[0].name
             }, "jwt-secret-key", { expiresIn: '1d' });
 
-            return res.json({ status: true, message: `Olá ${data[0].name}!`, token });
+            return res.json({ status: true, message: `Olá ${data[0].name}!`, token, user: data[0] });
         });
     });
 };

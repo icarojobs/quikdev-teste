@@ -13,8 +13,12 @@ const app = express();
 app.use(express.json());
 
 app.use(cors({
-    origin: [`${env('APP_PROTOCOL')}://${env('APP_URL')}:${env('APP_PORT')}`],
+    origin: [
+        `${env('APP_PROTOCOL')}://${env('APP_URL')}:${env('APP_PORT')}`,
+        'http://localhost:5173',
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"],
+    optionsSuccessStatus: 200,
     credentials: true
 }));
 
