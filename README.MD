@@ -1,5 +1,5 @@
 # QUIKDEV - TESTE ICARO
-Esse projeto é um estudo de caso simples, onde basicamente vai envolver a criação dos seguintes recursos:
+Esse projeto é um estudo de caso simples, onde basicamente vai envolver a criação de alguns recursos:
 - Registro de Usuários
 - Autenticação de Usuários
 - Criação de Posts
