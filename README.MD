@@ -6,8 +6,7 @@ Esse projeto é um estudo de caso simples, onde basicamente vai envolver a cria�
 - Criação de Comentários em um Post
 - Relatórios
 
-
-
+---
 ### PRÉ-REQUISITOS DE SISTEMA OPERACIONAL
 Para executar tanto o `frontend` quanto a `api` (backend), será necessário os seguintes softwares:
 - git
@@ -19,7 +18,6 @@ Para executar tanto o `frontend` quanto a `api` (backend), será necessário os 
 **Atenção:** Todo comando `bun` pode ser substituído por `npm` caso preferir.
 
 ---
-
 ### PRÉ-REQUISITOS PARA EXECUÇÃO - API
 Para executar a API será necessário ter instalado o `Docker` + `docker-compose` em seu sistema operacional.
 
