@@ -4,8 +4,7 @@ import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { Dashboard } from "./pages/Dashboard";
 
-
-export const App = () => {
+export const App = (params) => {
     return (
         <BrowserRouter>
             <Routes>
