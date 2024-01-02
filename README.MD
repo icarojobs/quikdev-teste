@@ -6,7 +6,7 @@ Esse projeto é um estudo de caso simples, onde basicamente vai envolver a cria�
 - Criação de Comentários em um Post
 - Relatórios
 
----
+
 
 ### PRÉ-REQUISITOS DE SISTEMA OPERACIONAL
 Para executar tanto o `frontend` quanto a `api` (backend), será necessário os seguintes softwares:
